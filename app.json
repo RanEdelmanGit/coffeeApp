@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "cbf65ac1-f7ea-4574-9e63-446a3df06654"
+      }
+    },
+    "owner": "ranedelman"
   }
 }
