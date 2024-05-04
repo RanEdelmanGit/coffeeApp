@@ -27,17 +27,18 @@ const styles = StyleSheet.create({
     flexDirection:'column',
     justifyContent:'center',
     alignItems:'center',
-    rowGap:5
+    rowGap:5,
+    width: 130,
   },
   button: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    width:'65%',
+    width:'60%',
+    marginRight:10,
     height:60,
     backgroundColor: '#D17842',
     borderRadius: 15,
-    width: '65%',
     alignSelf: 'flex-end',
   },
   price:{  

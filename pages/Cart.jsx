@@ -1,12 +1,12 @@
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
-import React, { useState } from 'react'
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import React, { useState } from 'react';
 import CartItem from '../components/CartItem';
 import Menu from '../components/Menu';
 import CheckOut from '../components/CheckOut';
-import { data } from '../data'
+import { data } from '../data';
 
 const Cart = () => {
-  const { cards1, cards2 } = data;
+  const { cards1: items1, cards2: items2 } = data;
 
   const initialCounters = [
     { id: 1, value: 0, price: 4.20, size: 'S', sizeColor: 'white', sizeFontSize: 18, priceFontSize: 20 },
@@ -36,25 +36,25 @@ const Cart = () => {
         <Menu />
       </View>
       <View style={[styles.cartItemContainer, { marginTop: 20 }]}>
-        <CartItem props={cards1[0]} onValueChange={handleValueChange} counters={counters.slice(0, 3)} />
+        <CartItem item={items1[0]} onValueChange={handleValueChange} counters={counters.slice(0, 3)} />
       </View>
       <View style={[styles.cartItemContainer, { marginTop: 20 }]}>
-        <CartItem props={cards1[1]} onValueChange={handleValueChange} counters={counters.slice(3, 4)} />
+        <CartItem item={items1[1]} onValueChange={handleValueChange} counters={counters.slice(3, 4)} />
       </View>
       <View style={[styles.cartItemContainer, { marginTop: 20 }]}>
-        <CartItem props={cards1[2]} onValueChange={handleValueChange} counters={counters.slice(4, 5)} />
+        <CartItem item={items1[2]} onValueChange={handleValueChange} counters={counters.slice(4, 5)} />
       </View>
       <View style={[styles.cartItemContainer, { marginTop: 20 }]}>
-        <CartItem props={cards1[3]} onValueChange={handleValueChange} counters={counters.slice(5, 8)} />
+        <CartItem item={items1[3]} onValueChange={handleValueChange} counters={counters.slice(5, 8)} />
       </View>
       <View style={[styles.cartItemContainer, { marginVertical: 40 }]}>
        <CheckOut totalPrice={getTotalAmount()} />
       </View>
     </ScrollView>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;
 
 const styles = StyleSheet.create({
   container: {
@@ -72,4 +72,4 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-})
+});

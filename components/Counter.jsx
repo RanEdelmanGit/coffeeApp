@@ -1,32 +1,40 @@
-import { StyleSheet, Text, View, Pressable } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, Pressable } from 'react-native';
+import React from 'react';
 import { AntDesign } from '@expo/vector-icons';
 
-const Counter = ({ props, onValueChange}) => {
+const Counter = ({ id, value, price, size, sizeColor, sizeFontSize, priceFontSize, onValueChange }) => {
 
-    const handleIncrease = () => onValueChange(props.id, props.value + 1);
-    const handleDecrease = () => props.value > 0 && onValueChange(props.id, props.value - 1);
+    const handleIncrease = () => onValueChange(id, value + 1);
+    const handleDecrease = () => value > 0 && onValueChange(id, value - 1);
 
     return (
         <View style={styles.container}>
             <View style={styles.infoContainer}>
-                <View style={styles.sizeContainer}><Text style={{ color: props.sizeColor, fontSize: props.sizeFontSize }}>{props.size}</Text></View>
+                <View style={styles.sizeContainer}>
+                    <Text style={{ color: sizeColor, fontSize: sizeFontSize }}>{size}</Text>
+                </View>
                 <View style={styles.priceContainer}>
-                    <Text style={[styles.price, { color: 'white', fontSize: props.priceFontSize, fontWeight: 'bold' }]}>
-                        <Text style={[styles.price, { color: '#D17842', fontSize: props.priceFontSize }]}>$</Text> {props.price.toFixed(2)}
+                    <Text style={[styles.price, { color: 'white', fontSize: priceFontSize, fontWeight: 'bold' }]}>
+                        <Text style={[styles.price, { color: '#D17842', fontSize: priceFontSize }]}>$</Text> {price.toFixed(2)}
                     </Text>
                 </View>
             </View>
             <View style={styles.counterContainer}>
-                <Pressable style={styles.countBtn} onPress={handleDecrease}><AntDesign name="minus" size={16} color="white" /></Pressable>
-                <View style={styles.count}><Text style={{ color: 'white', fontSize: 18, fontWeight:'600' }}>{props.value}</Text></View>
-                <Pressable style={styles.countBtn} onPress={handleIncrease}><AntDesign name="plus" size={16} color="white" /></Pressable>
+                <Pressable style={styles.countBtn} onPress={handleDecrease}>
+                    <AntDesign name="minus" size={16} color="white" />
+                </Pressable>
+                <View style={styles.count}>
+                    <Text style={{ color: 'white', fontSize: 18, fontWeight: '600' }}>{value}</Text>
+                </View>
+                <Pressable style={styles.countBtn} onPress={handleIncrease}>
+                    <AntDesign name="plus" size={16} color="white" />
+                </Pressable>
             </View>
         </View>
-    )
-}
+    );
+};
 
-export default Counter
+export default Counter;
 
 const styles = StyleSheet.create({
     container: {
@@ -79,7 +87,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 10,
-        maxWidth:85,
+        maxWidth: 85,
         minWidth: 70,
         height: 35,
         backgroundColor: '#0C0F14',
@@ -92,6 +100,9 @@ const styles = StyleSheet.create({
         height: 'fit-content',
     },
     price: {
-        fontSize: 18, fontWeight: '600', marginHorizontal: 10,
+        fontSize: 18,
+        fontWeight: '600',
+        marginHorizontal: 10,
     },
-})
+});
+

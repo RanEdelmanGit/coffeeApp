@@ -2,16 +2,19 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import React from 'react';
 import Counter from './Counter';
 
-const CartItem = ({ props, onValueChange, counters }) => {
+const CartItem = ({ item, onValueChange, counters }) => {
+
     return (
         <View style={styles.container}>
             <View style={styles.topContainer}>
                 {counters.length === 1 ? (
-                    <Image style={[{ width: 145, height: 145, borderRadius: 10, marginRight: 10 }]} source={{ uri: props.image }} />
-                ):(<Image style={styles.image} source={{ uri: props.image }} />)}
+                    <Image style={[{ width: 145, height: 145, borderRadius: 10, marginRight: 10 }]} source={{ uri: item.image }} />
+                ) : (
+                    <Image style={styles.image} source={{ uri: item.image }} />
+                )}
                 <View style={styles.infoContainer}>
-                    <Text style={styles.title}>{props.title}</Text>
-                    <Text style={styles.desc}>{props.desc}</Text>
+                    <Text style={styles.title}>{item.title}</Text>
+                    <Text style={styles.desc}>{item.desc}</Text>
                     {counters.length > 1 && (
                         <View style={styles.tag}>
                             <Text style={{ color: '#AEAEAE', fontSize: 12 }}>Medium Roasted</Text>
@@ -20,10 +23,8 @@ const CartItem = ({ props, onValueChange, counters }) => {
                     <View style={styles.counterContainer}>
                         {counters.length === 1 && (
                             <Counter
-                                key={counters[0].id}
-                                props={counters[0]}
+                                {...counters[0]}
                                 onValueChange={onValueChange}
-                                counter={counters[0]}
                             />
                         )}
                     </View>
@@ -31,8 +32,8 @@ const CartItem = ({ props, onValueChange, counters }) => {
             </View>
             {counters.length > 1 && (
                 <View style={styles.bottomContainer}>
-                    {counters.map((counter, index) => (
-                        <Counter key={index} props={counter} onValueChange={onValueChange} counter={counter} />
+                    {counters.map(counter => (
+                        <Counter key={counter.id} {...counter} onValueChange={onValueChange} />
                     ))}
                 </View>
             )}
@@ -55,7 +56,6 @@ const styles = StyleSheet.create({
     topContainer: {
         flexDirection: 'row',
         width: '100%',
-        height: 'fit-content',
         alignSelf: 'stretch',
         backgroundColor: '#252A32',
         paddingHorizontal: 15,
@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
         width: 130,
         height: 130,
         borderRadius: 10,
-        marginRight: 10, // Ensure some spacing between the image and infoContainer
+        marginRight: 10, 
     },
 });
+
