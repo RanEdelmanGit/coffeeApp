@@ -22,7 +22,7 @@ export default function App() {
           screenOptions={{
             tabBarStyle: {
               backgroundColor: '#0d0f14',
-              
+              borderTopWidth: 0,
             },
             tabBarLabelPosition: "beside-icon",
             tabBarShowLabel: false,
