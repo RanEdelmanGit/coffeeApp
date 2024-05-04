@@ -9,7 +9,7 @@ const CheckOut = ({totalPrice}) => {
         <Text style={{ color: '#AEAEAE', fontSize: 12 }} >Total Price</Text>
         <Text style={styles.price}><Text style={[styles.price, { color: '#D17842'}]}>$ </Text>{totalPrice.toFixed(2)}</Text>
       </View>
-      <Pressable style={styles.button}><Text style={{fontWeight:'500', fontSize:18}}>Pay</Text></Pressable>
+      <Pressable style={styles.button}><Text style={{fontWeight:'600', fontSize:18, color:'white'}}>Pay</Text></Pressable>
     </View>
   )
 }
@@ -26,9 +26,10 @@ const styles = StyleSheet.create({
   totalContainer:{
     flexDirection:'column',
     justifyContent:'center',
-    alignItems:'center',
+    alignItems:'flex-start',
     rowGap:5,
     width: 130,
+    paddingLeft:15,
   },
   button: {
     flexDirection: 'row',
@@ -44,7 +45,6 @@ const styles = StyleSheet.create({
   price:{  
     fontSize: 22, 
     fontWeight: '600', 
-    marginHorizontal: 10,
     color:'white',
   },
 })
