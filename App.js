@@ -1,44 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Home from './pages/Home';
-import Cart from './pages/Cart';
-import Favorites from './pages/Favorites';
-import OrderHistory from './pages/OrderHistory';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Entypo } from '@expo/vector-icons';
-import { FontAwesome5 } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
-import { FontAwesome } from '@expo/vector-icons';
-
+import React from "react";
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, View } from "react-native";
+import Home from "./screens/Home";
+import Cart from "./screens/Cart";
+import Favorites from "./screens/Favorites";
+import OrderHistory from "./screens/OrderHistory";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Entypo } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <NavigationContainer >
-        <Tab.Navigator initialRouteName='Home'
+      <NavigationContainer>
+        <Tab.Navigator
+          initialRouteName="Home"
           screenOptions={{
-            tabBarStyle: {
-              backgroundColor: '#0d0f14',
-              borderTopWidth: 0,
-            },
             tabBarLabelPosition: "beside-icon",
             tabBarShowLabel: false,
             tabBarActiveTintColor: "#D17842",
             tabBarInactiveTintColor: "#52555A",
-            headerStyle: {
-             height:0,
-             backgroundColor: '#0d0f14'
+
+            tabBarStyle: {
+              backgroundColor: "#0d0f14",
+              borderTopWidth: 0,
             },
-            style: {
-              backgroundColor: '#0d0f14',
-            },
-            headerTintColor: '#0d0f14',
-            headerTitleStyle: { fontWeight: "bold" },
-            headerTitleAlign: "center"
-          }}>
+          }}
+        >
           <Tab.Screen
             name="Home"
             component={Home}
@@ -46,6 +39,7 @@ export default function App() {
               tabBarIcon: ({ color, size }) => (
                 <Entypo name="home" color={color} size={size} />
               ),
+              headerShown: false, // Hide header for Home screen
             }}
           />
           <Tab.Screen
@@ -55,6 +49,7 @@ export default function App() {
               tabBarIcon: ({ color, size }) => (
                 <FontAwesome5 name="shopping-bag" size={size} color={color} />
               ),
+              headerShown: false, // Hide header for Cart screen
             }}
           />
           <Tab.Screen
@@ -64,6 +59,7 @@ export default function App() {
               tabBarIcon: ({ color, size }) => (
                 <AntDesign name="heart" size={size} color={color} />
               ),
+              headerShown: false, // Hide header for Favorites screen
             }}
           />
           <Tab.Screen
@@ -71,12 +67,14 @@ export default function App() {
             component={OrderHistory}
             options={{
               tabBarIcon: ({ color, size }) => (
-                <FontAwesome name="history" size={size} color={color} />
+                <Ionicons name="notifications" size={size} color={color} />
               ),
+              headerShown: false, // Hide header for OrderHistory screen
             }}
           />
         </Tab.Navigator>
       </NavigationContainer>
+      <StatusBar style="light" />
     </View>
   );
 }
@@ -84,7 +82,5 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: '100%',
-    height: '100%',
   },
 });
